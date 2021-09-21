@@ -209,7 +209,7 @@ def run_train(args, hparams):
 
     hparams.set_from_args(args)
     print("Hyperparameters:")
-    hparams.print()
+    print(hparams)
 
     #srl dev set which uses 24 section of ptb is different from syn
     synconst_train_path = args.synconst_train_ptb_path
@@ -376,7 +376,7 @@ def run_train(args, hparams):
 
     load_path = None
     if load_path is not None:
-        print(f"Loading parameters from {load_path}")
+        print("Loading parameters from ", load_path)
         info = torch_load(load_path)
         parser = Zparser.ChartParser.from_spec(info['spec'], info['state_dict'])
     else:
@@ -431,9 +431,9 @@ def run_train(args, hparams):
 
     best_epoch = 0
     def check_dev(epoch_num):
-        nonlocal best_dev_score
-        nonlocal best_model_path
-        nonlocal best_epoch
+        #nonlocal best_dev_score
+        #nonlocal best_model_path
+        #nonlocal best_epoch
 
         print("Start dev eval:")
 
